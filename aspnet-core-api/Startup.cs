@@ -75,6 +75,17 @@ namespace aspnet_core_api
 
       app.UseAuthentication();
 
+      // add some secutiry headers (recommendations from securityheaders.io)
+      app.Use((context, next) =>
+      {
+        context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
+        context.Response.Headers["X-Frame-Options"] = "SAMEORIGIN";
+        context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+        context.Response.Headers["Content-Security-Policy"] = "script-src 'self'";
+        context.Response.Headers["Referrer-Policy"] = "no-referrer-when-downgrade";
+        return next.Invoke();
+      });
+
       app.UseHttpsRedirection();
       app.UseMvc();
     }
