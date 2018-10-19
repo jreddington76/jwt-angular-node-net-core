@@ -6,13 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { AuthService } from './auth.service';
 import { httpInterceptorProviders } from './http-interceptors';
+import { HomeComponent } from './home/home.component';
+import { SecureComponent } from './secure/secure.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    SecureComponent
   ],
   imports: [
     BrowserModule,
@@ -22,8 +25,7 @@ import { httpInterceptorProviders } from './http-interceptors';
     AppRoutingModule
   ],
   providers: [
-    httpInterceptorProviders,
-    AuthService
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })

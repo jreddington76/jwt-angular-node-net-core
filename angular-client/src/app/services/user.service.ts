@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './User';
+import { User } from '../User';
+import { environment } from 'src/environments/environment';
 
-//const url: string = 'http://localhost:3000/';
-const url: string = 'https://localhost:5001/';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +13,6 @@ export class UserService {
   }
 
   getUser() {
-    return this.http.get<User>(url + 'api/values');
+    return this.http.get<User>(environment.api + 'api/values');
   }
 }

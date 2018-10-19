@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +9,17 @@ import { UserService } from './user.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(private userService: UserService) { }
+  constructor(private router: Router) { }
 
-  getUserDetails() {
+  navigateToHome() {
 
-    this.userService.getUser()
-      .subscribe(
-        () => {
-          console.log("User is logged in");
-        }
-      );
+    this.router.navigate(["/"]);
+
+  }
+
+  navigateToSecureArea() {
+
+    this.router.navigate(["/secure"]);
 
   }
 

@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap, shareReplay } from 'rxjs/operators';
 import * as moment from "moment";
-import { User } from './User';
+import { User } from '../User';
+import { environment } from 'src/environments/environment';
 
-//const url: string = 'http://localhost:3000/';
-const url: string = 'https://localhost:6001/';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>(url + 'api/auth/login', { email, password })
+    return this.http.post<User>(environment.token + 'api/auth/login', { email, password })
       .pipe(
         tap(res => this.setSession(res)),
         shareReplay()

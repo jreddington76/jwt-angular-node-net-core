@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,40 +11,43 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  returnUrl: string;
+  submitted: boolean;
 
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private authService: AuthService,
-    private router: Router) {
-
-    this.loginForm = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
+    private router: Router) { }
 
   ngOnInit() {
-  }
-
-  login() {
-    const val = this.loginForm.value;
-
-    if (val.email && val.password) {
-      this.authService.login(val.email, val.password)
-        .subscribe(
-          () => {
-            console.log("User is logged in");
-            //this.router.navigateByUrl('/');
-          }
-        );
-    }
-  }
-
-  logout() {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
 
     this.authService.logout();
 
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  get isValid() { return this.loginForm.valid; }
+   // convenience getter for easy access to form fields
+   get f() { return this.loginForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    this.authService.login(this.loginForm.value.username, this.loginForm.value.password)
+      .subscribe(
+        () => {
+          this.router.navigate([this.returnUrl]);
+        }
+      );
+  }
 }
