@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
+using aspnet_core_token_server.Services;
+using aspnet_core_token_server.Interfaces;
 
 namespace aspnet_core_token_server
 {
@@ -38,6 +40,8 @@ namespace aspnet_core_token_server
       {
         options.Filters.Add(new CorsAuthorizationFilterFactory("AllowOrigins"));
       }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+      services.AddTransient<IUserService, UserService>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
