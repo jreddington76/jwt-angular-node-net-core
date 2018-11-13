@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service';
 })
 export class SecureComponent implements OnInit {
 
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.userService.getUser()

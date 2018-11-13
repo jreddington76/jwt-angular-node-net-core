@@ -1,6 +1,8 @@
 # jwt-angular-node-net-core
 [JSON Web Tokens](https://jwt.io/) (JWT) example using [Angular](https://angular.io/) front-end, [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-2.1) API and *ASP.NET Core* token server.
 
+*Node token server in the works*
+
 
 ## Prerequisities
 

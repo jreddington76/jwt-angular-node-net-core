@@ -45,16 +45,21 @@ namespace aspnet_core_token_server.Controllers
 
       user.Roles.ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role)));
 
+      var expiresIn = DateTime.Now.AddMinutes(5);
       var tokenOptions = new JwtSecurityToken(
           issuer: "http://localhost:5000",
           audience: "http://localhost:5000",
           claims: claims,
-          expires: DateTime.Now.AddMinutes(5),
+          expires: expiresIn,
           signingCredentials: signingCredentials
       );
 
       var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-      return Ok(new { Token = tokenString });
+      return Ok(new
+      {
+        Token = tokenString,
+        ExpiresIn = expiresIn
+      });
     }
   }
 }
