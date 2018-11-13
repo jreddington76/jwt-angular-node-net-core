@@ -1,11 +1,11 @@
 # jwt-angular-node-net-core
-JSON Web Tokens (JWT) example using **Angular** front-end, **ASP.NET Core** API and **ASP.NET Core** token server.
+[JSON Web Tokens](https://jwt.io/) (JWT) example using [Angular](https://angular.io/) front-end, [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-2.1) API and *ASP.NET Core* token server.
 
 
 ## Prerequisities
 
-  * Node
-  * .NET Core 2.1
+  * [Node](https://nodejs.org/en/download/)
+  * [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)
 
 ## Get Started
 
@@ -26,4 +26,3 @@ JSON Web Tokens (JWT) example using **Angular** front-end, **ASP.NET Core** API 
 - https://blog.angular-university.io/angular-jwt-authentication/
 - https://code-maze.com/authentication-aspnetcore-jwt-1/
 - https://code-maze.com/authentication-aspnetcore-jwt-2/
-- https://jwt.io/
