@@ -8,7 +8,7 @@ namespace aspnet_core_token_server.Services
   {
     public UserModel GetUser(string username, string password)
     {
-      if (username == "j" && password == "j")
+      if (username == "james" && password == "password")
       {
         return new UserModel
         {
@@ -18,7 +18,7 @@ namespace aspnet_core_token_server.Services
           Roles = new List<string>() { "Manager" }
         };
       }
-      if (username == "r" && password == "r")
+      if (username == "damo" && password == "password")
       {
         return new UserModel
         {
